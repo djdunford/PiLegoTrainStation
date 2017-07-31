@@ -3,7 +3,7 @@
 #
 #  onesignal.py
 #  
-#  Copyright 2017  <pi@djdrpi>
+#  Copyright 2017  Darren Dunford
 #  
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -21,8 +21,10 @@
 #  MA 02110-1301, USA.
 #  
 #  
-
+# import GPIO library
 import RPi.GPIO as GPIO
+
+# import time library
 import time
 
 # Set the GPIO PIN naming mode
@@ -31,7 +33,7 @@ GPIO.setmode(GPIO.BCM)
 # Suppress warnings for GPIO usage clashes
 GPIO.setwarnings(False)
 
-# Set BCM lines for buzzer and button
+# Set BCM lines for buttons and lights
 ButtonRed=19
 ButtonAmber=20
 ButtonGreen=21
@@ -39,7 +41,9 @@ LightRed=7
 LightAmber=8
 LightGreen=25
 
-# Set PINBuzzer as an output pin and initialise it to 'off'
+# Set the light pins as outputs and switch them on
+# all 3 lights on is a one-time condition that
+# indicates a successful startup
 GPIO.setup(LightRed, GPIO.OUT)
 GPIO.output(LightRed, GPIO.HIGH)
 GPIO.setup(LightAmber, GPIO.OUT)
@@ -47,12 +51,17 @@ GPIO.output(LightAmber, GPIO.HIGH)
 GPIO.setup(LightGreen, GPIO.OUT)
 GPIO.output(LightGreen, GPIO.HIGH)
 
-# Set ButtonPin as an input pin
+# Set all button pins as an input pins, and enable
+# the internal pull-up resistors
 GPIO.setup(ButtonRed, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(ButtonAmber, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(ButtonGreen, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
+# loop forever
 while True:
+
+	# if a button is pressed, turn on the appropriate light
+	# and turn the other lights off
 	if GPIO.input(ButtonRed)==GPIO.LOW:
 		GPIO.output(LightRed, GPIO.HIGH)
 		GPIO.output(LightAmber, GPIO.LOW)
