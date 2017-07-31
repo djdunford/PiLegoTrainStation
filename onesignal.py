@@ -75,4 +75,4 @@ while True:
 		GPIO.output(LightAmber, GPIO.LOW)
 		GPIO.output(LightGreen, GPIO.HIGH)
 
-	time.sleep(0.01)
+	time.sleep(0.1)
