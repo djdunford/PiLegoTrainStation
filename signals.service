@@ -1,0 +1,12 @@
+[Unit]
+Description=Thomas Signals
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /home/pi/bin/signals/onesignal.py
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
