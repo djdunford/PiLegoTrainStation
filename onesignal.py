@@ -24,11 +24,18 @@
 # import GPIO library
 import RPi.GPIO as GPIO
 
+# import LCD controller library
+from RPLCD.i2c import CharLCD
+
 # import time library
 import time
 
 # Set the GPIO PIN naming mode
 GPIO.setmode(GPIO.BCM)
+
+# set up display
+lcd = CharLCD(i2c_expander='PCF8574',address=0x27,port=1,cols=20,rows=4,dotsize=8,charmap='A02',auto_linebreaks=True,backlight_enabled=True)
+lcd.write_string('Petersfield   15minsWorcester     20mins')
 
 # Suppress warnings for GPIO usage clashes
 GPIO.setwarnings(False)
