@@ -38,7 +38,7 @@ lcd = CharLCD(i2c_expander='PCF8574',address=0x27,port=1,cols=20,rows=4,dotsize=
 
 # set up station list and initial departures
 stations = ['Petersfield','King\'s Cross','Worcester','Royston','Hitchin','Letchworth','Bristol','Oxford','Cardiff','Baldock','Stevenage','Welwyn','Finsbury Pk','Blackfriars','Brighton','St. Pancras','Knebworth']
-departures = [{'Name':'PetersfieldXXXXXX','Time':time.time()+120.0},{'Name':'Worcester','Time':time.time()+240.0}]
+departures = [{'Name':'Petersfield','Time':time.time()+120.0},{'Name':'Worcester','Time':time.time()+660.0}]
 
 # Suppress warnings for GPIO usage clashes
 GPIO.setwarnings(False)
@@ -83,8 +83,12 @@ while True:
 			lcd.write_string(departure['Name'][0:13])
 			lcd.cursor_pos = (row,14)
 			mins = int((departure['Time']-time.time())/60.0)
-			if mins > 0:
+			if mins > 9:
 				lcd.write_string(str(mins) + 'mins')
+			elif mins > 1:
+				lcd.write_string(' ' + str(mins) + 'mins')
+			elif mins == 1:
+				lcd.write_string(' ' + str(mins) + 'min ')
 			else:
 				lcd.write_string(' DUE  ')
 			row += 1
