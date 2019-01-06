@@ -38,7 +38,7 @@ lcd = CharLCD(i2c_expander='PCF8574',address=0x27,port=1,cols=20,rows=4,dotsize=
 
 # set up station list and initial departures
 stations = ['Petersfield','King\'s Cross','Worcester','Royston','Hitchin','Letchworth','Bristol','Oxford','Cardiff','Baldock','Stevenage','Welwyn','Finsbury Pk','Blackfriars','Brighton','St. Pancras','Knebworth']
-departures = [{'Name':'Petersfield','Time':time.time()+120.0},{'Name':'Worcester','Time':time.time()+660.0}]
+departures = [{'Name':'Petersfield','Time':time.time()+180.0},{'Name':'Worcester','Time':time.time()+660.0}]
 
 # Suppress warnings for GPIO usage clashes
 GPIO.setwarnings(False)
