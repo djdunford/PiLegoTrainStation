@@ -83,6 +83,7 @@ while True:
 			lcd.write_string(departure['Name'][0:13])
 			lcd.cursor_pos = (row,14)
 			lcd.write_string('10mins')
+			lcd.home()
 			row += 1
 		starttime=time.time()
 
