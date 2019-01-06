@@ -80,8 +80,8 @@ while True:
 		row = 0
 		for departure in departures:
 			lcd.cursor_pos = (row,0)
-			lcd.write_string(departure['Name'][0:14])
-			lcd.cursor_pos = (row,15)
+			lcd.write_string(departure['Name'][0:13])
+			lcd.cursor_pos = (row,14)
 			lcd.write_string('10mins')
 		starttime=time.time()
 
