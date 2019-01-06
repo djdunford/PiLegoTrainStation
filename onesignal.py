@@ -34,8 +34,11 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 # set up display
-lcd = CharLCD(i2c_expander='PCF8574',address=0x27,port=1,cols=20,rows=4,dotsize=8,charmap='A02',auto_linebreaks=True,backlight_enabled=True)
-lcd.write_string('Petersfield   15minsWorcester     20mins')
+lcd = CharLCD(i2c_expander='PCF8574',address=0x27,port=1,cols=20,rows=4,dotsize=8,charmap='A02',auto_linebreaks=False,backlight_enabled=True)
+
+# set up station list and initial departures
+stations = ['Petersfield','King\'s Cross','Worcester','Royston','Hitchin','Letchworth','Bristol','Oxford','Cardiff','Baldock','Stevenage','Welwyn','Finsbury Pk','Blackfriars','Brighton','St. Pancras','Knebworth']
+departures = [{'Name':'Petersfield','Time':15},{'Name':'Worcester','Time':30}]
 
 # Suppress warnings for GPIO usage clashes
 GPIO.setwarnings(False)
@@ -64,8 +67,19 @@ GPIO.setup(ButtonRed, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(ButtonAmber, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 GPIO.setup(ButtonGreen, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
+# timer for redrawing LCD (every 'interval' seconds)
+interval = 5.0
+starttime = time.time()-interval-1.0
+
 # loop forever
 while True:
+
+	# if interval expired, redraw LCD
+	if time.time()>starttime+interval:
+		lcd.home()
+		for departure in departures:
+			lcd.write_string(departure.Name + '\n\r')
+		starttime=time.time()
 
 	# if a button is pressed, turn on the appropriate light
 	# and turn the other lights off
@@ -81,5 +95,7 @@ while True:
 		GPIO.output(LightRed, GPIO.LOW)
 		GPIO.output(LightAmber, GPIO.LOW)
 		GPIO.output(LightGreen, GPIO.HIGH)
+		
+	# 
 
 	time.sleep(0.1)
