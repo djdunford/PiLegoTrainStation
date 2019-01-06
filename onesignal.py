@@ -77,7 +77,7 @@ while True:
 	# if interval expired, redraw LCD
 	if time.time()>starttime+interval:
 		lcd.home()
-		lcd.write_string('NEXT DEPARTURES')
+		lcd.write_string('NEXT TRAIN TO')
 		row = 1
 		for departure in departures:
 			lcd.cursor_pos = (row,0)
