@@ -77,7 +77,8 @@ while True:
 	# if interval expired, redraw LCD
 	if time.time()>starttime+interval:
 		lcd.home()
-		row = 0
+		lcd.write_string('NEXT DEPARTURES')
+		row = 1
 		for departure in departures:
 			lcd.cursor_pos = (row,0)
 			lcd.write_string(departure['Name'][0:13])
@@ -92,6 +93,8 @@ while True:
 			else:
 				lcd.write_string(' DUE  ')
 			row += 1
+			if row == 4:
+				break
 		starttime=time.time()
 
 	# if a button is pressed, turn on the appropriate light
