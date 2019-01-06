@@ -78,7 +78,8 @@ while True:
 	if time.time()>starttime+interval:
 		lcd.home()
 		for departure in departures:
-			lcd.write_string(departure['Name'][0,13] + '\n\r')
+			name = departure['Name']
+			lcd.write_string(name[0,13] + '\n\r')
 		starttime=time.time()
 
 	# if a button is pressed, turn on the appropriate light
