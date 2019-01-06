@@ -38,7 +38,7 @@ lcd = CharLCD(i2c_expander='PCF8574',address=0x27,port=1,cols=20,rows=4,dotsize=
 
 # set up station list and initial departures
 stations = ['Petersfield','King\'s Cross','Worcester','Royston','Hitchin','Letchworth','Bristol','Oxford','Cardiff','Baldock','Stevenage','Welwyn','Finsbury Pk','Blackfriars','Brighton','St. Pancras','Knebworth']
-departures = [{Name:'Petersfield',Time:15},{Name:'Worcester',Time:30}]
+departures = [{'Name':'Petersfield','Time':15},{'Name':'Worcester','Time':30}]
 
 # Suppress warnings for GPIO usage clashes
 GPIO.setwarnings(False)
@@ -78,7 +78,7 @@ while True:
 	if time.time()>starttime+interval:
 		lcd.home()
 		for departure in departures:
-			lcd.write_string(departure.Name + '\n\r')
+			lcd.write_string(departure['Name'] + '\n\r')
 		starttime=time.time()
 
 	# if a button is pressed, turn on the appropriate light
