@@ -80,10 +80,20 @@ while True:
 		lcd.write_string('NEXT TRAIN TO')
 		row = 1
 		for departure in departures:
+
+			# set cursor position to write destination name
 			lcd.cursor_pos = (row,0)
-			lcd.write_string(departure['Name'][0:13])
+			
+			# write string, exactly 13 characters + trailing space
+			lcd.write_string(departure['Name'].ljust(13)[:13] + " ")
+
+			# set cursor position for "mins" indicator
 			lcd.cursor_pos = (row,14)
+			
+			# determine number of mins to show
 			mins = int((departure['Time']-time.time())/60.0)
+			
+			# write mins, using appropriate formatting depending on the number
 			if mins > 9:
 				lcd.write_string(str(mins) + 'mins')
 			elif mins > 1:
@@ -92,9 +102,13 @@ while True:
 				lcd.write_string(' ' + str(mins) + 'min ')
 			else:
 				lcd.write_string(' DUE  ')
+				
+			# advance row. After three rows, terminate	
 			row += 1
 			if row == 4:
 				break
+			
+		# reset interval timer for update
 		starttime=time.time()
 
 	# if a button is pressed, turn on the appropriate light
