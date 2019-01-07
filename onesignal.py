@@ -30,6 +30,9 @@ from RPLCD.i2c import CharLCD
 # import time library
 import time
 
+# import random library
+import random
+
 # Set the GPIO PIN naming mode
 GPIO.setmode(GPIO.BCM)
 
@@ -111,6 +114,15 @@ while True:
 		# reset interval timer for update
 		starttime=time.time()
 
+	# remove trains that have departed, and create new ones to replace
+	for departure in departures:
+		if departure['Time'] < (time.time() - 60):
+			departures.remove(departure)
+			departures.append({'Name':random.choice(stations),'Time':time.time()+random.randrange(15)*60})
+	
+	# re-sort the departures list
+	departures.sort(key=lambda departure:departure['Time'])
+
 	# if a button is pressed, turn on the appropriate light
 	# and turn the other lights off
 	if GPIO.input(ButtonRed)==GPIO.LOW:
@@ -126,6 +138,5 @@ while True:
 		GPIO.output(LightAmber, GPIO.LOW)
 		GPIO.output(LightGreen, GPIO.HIGH)
 		
-	# 
-
+	# small delay
 	time.sleep(0.1)
