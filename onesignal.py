@@ -41,7 +41,7 @@ lcd = CharLCD(i2c_expander='PCF8574',address=0x27,port=1,cols=20,rows=4,dotsize=
 
 # set up station list and initial departures
 stations = ['Petersfield','King\'s Cross','Worcester','Royston','Hitchin','Letchworth','Bristol','Oxford','Cardiff','Baldock','Stevenage','Welwyn','Finsbury Pk','Blackfriars','Brighton','St. Pancras','Knebworth']
-departures = [{'Name':'Petersfield','Time':time.time()+180.0},{'Name':'Worcester','Time':time.time()+660.0}]
+departures = [{'Name':'Petersfield','Time':time.time()+180.0},{'Name':'Worcester','Time':time.time()+330.0},{'Name':'Royston','Time':time.time()+545.0}]
 
 # Suppress warnings for GPIO usage clashes
 GPIO.setwarnings(False)
@@ -79,9 +79,17 @@ while True:
 
 	# if interval expired, redraw LCD
 	if time.time()>starttime+interval:
+	
+		# clear LCD screen
 		lcd.home()
+		
+		# write first line
 		lcd.write_string('NEXT TRAIN TO')
+		
+		# set for second row (first row is row zero)
 		row = 1
+		
+		# iterate through departures
 		for departure in departures:
 
 			# set cursor position to write destination name
@@ -118,7 +126,7 @@ while True:
 	for departure in departures:
 		if departure['Time'] < (time.time() - 60):
 			departures.remove(departure)
-			departures.append({'Name':random.choice(stations),'Time':time.time()+random.randrange(15)*60})
+			departures.append({'Name':random.choice(stations),'Time':time.time()+(random.randrange(15)+2)*60})
 	
 	# re-sort the departures list
 	departures.sort(key=lambda departure:departure['Time'])
