@@ -1,5 +1,7 @@
 # Raspberry Pi Signal and Departure Board for Model Lego Train
 
+![Photo](/images/PiLegoTrainSignalPhoto.jpg)
+
 Simple single signal and LCD departure board screen using a Raspberry Pi - ideally suited for Lego railways or other similar model railway layouts. Created for my 5-year-old son to use. There is a single set of signal lights, buttons which can be used to change the signals, and an LCD screen acting as a departure board showing random-selected destinations and a countdown timer for each. My son is mad about trains and lego, so he loves it, and we're using the station names on the departure board to help him practice his reading.
 
 There's a lot of potential to improve this, among my thoughts are:
@@ -24,6 +26,8 @@ The parts list below can be used to make the components as pictured, you can ofc
 * [Dupont Male PCB headers 2x 4pin single row, 1x 9pin single row](https://www.amazon.co.uk/dp/B06XR8CV8P/ref=cm_sw_em_r_mt_dp_U_Q5wsCbPJ7MDAM)
 
 ### Wiring diagram
+
+![Wiring Diagram](/images/PiLegoTrainSignal_bb.jpg)
 
 * Connect the LCD screen as follows:
     * SDA to GPIO pin 3
