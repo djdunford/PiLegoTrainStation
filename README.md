@@ -69,4 +69,4 @@ For the versions available, see the [tags on this repository](https://github.com
 
 ## Authors
 
-* **Darren Dunford** - *Initial work* - [djdroyston](https://github.com/djdroyston)
+* **Darren Dunford** - *Initial work* - [djdunford](https://github.com/djdunford)
