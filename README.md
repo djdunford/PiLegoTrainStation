@@ -8,7 +8,7 @@ There's a lot of potential to improve this, among my thoughts are:
 * support multiple signals
 * add logic between the signals - for instance ensuring only one can show a green light at any time
 * connect the buttons and signals via a GPIO expander (e.g. [PCF8574](https://www.amazon.co.uk/dp/B07CNYF9FX/ref=cm_sw_em_r_mt_dp_U_u1wsCbKMFYN6P)) so multiple sets can be positioned around a train layout daisy-chained with 4 core cable to the I2C bus
-* add a speaker (connected to via an ADC and amp such as [MAX98357A]( https://shop.pimoroni.com/products/adafruit-i2s-3w-class-d-amplifier-breakout-max98357a) to the Pi's I2S output) for station announcements and other sounds
+* add a speaker (connected via an ADC and amp such as [MAX98357A]( https://shop.pimoroni.com/products/adafruit-i2s-3w-class-d-amplifier-breakout-max98357a) to the Pi's I2S output) for station announcements and other sounds
 
 
 ## Getting Started
@@ -61,7 +61,11 @@ Clone the github repo in to a new directory on your Pi:
 git clone https://github.com/djdunford/PiLegoTrainStation
 ```
 
-Install the software on to your Pi - this will copy the code in to /opt, and set up a service called "signals" which you can start / stop. By default the service will start automatically on boot, however you can change this with systemctl.
+Install the software on to your Pi - this will copy the code in to /opt, and set up a service called "signals" which you can start / stop. By default the service will start automatically on boot, however you can change this with systemctl:
+
+```
+sudo ./install.sh
+```
 
 ## Versions
 
