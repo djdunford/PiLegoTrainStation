@@ -47,7 +47,7 @@ The parts list below can be used to make the components as pictured, you can ofc
 
 ### Installing
 
-Install Raspbian on to a memory stick, boot your Pi and log in as the "pi" user (see here for instructions).
+Install Raspbian on to a memory stick, boot your Pi and log in as the "pi" user ([see here for instructions](https://www.raspberrypi.org/documentation/installation/installing-images/)).
 
 Install git:
 
