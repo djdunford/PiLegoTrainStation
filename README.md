@@ -1,5 +1,7 @@
 # Raspberry Pi Signal and Departure Board for Model Lego Train
 
+![Photo](images/PiLegoTrainSignalPhoto.JPG)
+
 Simple single signal and LCD departure board screen using a Raspberry Pi - ideally suited for Lego railways or other similar model railway layouts. Created for my 5-year-old son to use. There is a single set of signal lights, buttons which can be used to change the signals, and an LCD screen acting as a departure board showing random-selected destinations and a countdown timer for each. My son is mad about trains and lego, so he loves it, and we're using the station names on the departure board to help him practice his reading.
 
 There's a lot of potential to improve this, among my thoughts are:
@@ -24,6 +26,8 @@ The parts list below can be used to make the components as pictured, you can ofc
 * [Dupont Male PCB headers 2x 4pin single row, 1x 9pin single row](https://www.amazon.co.uk/dp/B06XR8CV8P/ref=cm_sw_em_r_mt_dp_U_Q5wsCbPJ7MDAM)
 
 ### Wiring diagram
+
+![Wiring Diagram](images/PiLegoTrainSignal_bb.jpg)
 
 * Connect the LCD screen as follows:
     * SDA to GPIO pin 3
@@ -59,48 +63,10 @@ git clone https://github.com/djdunford/PiLegoTrainStation
 
 Install the software on to your Pi - this will copy the code in to /opt, and set up a service called "signals" which you can start / stop. By default the service will start automatically on boot, however you can change this with systemctl.
 
-```
-until finished
-```
+## Versions
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+For the versions available, see the [tags on this repository](https://github.com/djdunford/PiLegoTrainStation/tags). 
 
 ## Authors
 
-* **Darren Dunford** - *Initial work* - [djdroyston](https://github.com/djdroyston)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* xxx
+* **Darren Dunford** - *Initial work* - [djdunford](https://github.com/djdunford)
