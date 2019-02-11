@@ -2,8 +2,7 @@
 #
 # install.sh
 #
-# install the service and the WSGI web app on
-# Raspbian Jessie for XmasTrain 2017
+# install the service to run on startup
 #
 # by Darren Dunford
 #
@@ -29,7 +28,6 @@ cp onesignal.py $appdir
 cp signals.service /lib/systemd/system
 chmod 644 /lib/systemd/system/signals.service
 
-# restart Apache and xmastrain service
+# restart Apache and signals service
 systemctl daemon-reload
 systemctl restart signals
-systemctl enable signals

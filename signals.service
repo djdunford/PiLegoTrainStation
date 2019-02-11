@@ -1,5 +1,5 @@
 [Unit]
-Description=Thomas Signals
+Description=Train Signals
 After=multi-user.target
 
 [Service]
